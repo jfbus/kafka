@@ -173,7 +173,7 @@ func JoinConsumerGroup(name string, topics []string, zookeeper []string, config 
 		cg.Logf("Consumer instance registered (%s).", cg.instance.ID)
 	}
 
-	offsetConfig := OffsetManagerConfig{CommitInterval: config.Offsets.CommitInterval}
+	offsetConfig := OffsetManagerConfig{CommitInterval: config.Offsets.CommitInterval, VerboseLogging: true}
 	cg.offsetManager = NewZookeeperOffsetManager(cg, &offsetConfig)
 
 	go cg.topicListConsumer(topics)
